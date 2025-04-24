@@ -2,7 +2,7 @@ from typing import Callable, TypeVar
 import os
 import inspect
 import streamlit as st
-import streamlit_analytics2 as streamlit_analytics
+import streamlit_analytics
 from dotenv import load_dotenv
 from streamlit_chat import message
 from streamlit_pills import pills
@@ -31,7 +31,6 @@ st.set_page_config(layout="wide")
 st.title("GenAI Career Assistant - 👨‍💼")
 st.markdown("[Connect with me on LinkedIn](https://www.linkedin.com/in/aman-varyani-885725181/)")
 
-streamlit_analytics.start_tracking()
 
 # Setup directories and paths
 temp_dir = "temp"
@@ -64,9 +63,8 @@ st.markdown("**Resume uploaded successfully!**")
 # Sidebar - Service Provider Selection
 service_provider = st.sidebar.selectbox(
     "Service Provider",
-    ("groq (llama-3.1-70b-versatile)", "openai"),
+    ("groq (llama3-70b-8192)", "openai"),
 )
-streamlit_analytics.stop_tracking()
 
 # Not to track the key
 if service_provider == "openai":
@@ -102,7 +100,7 @@ else:
         os.environ["GROQ_API_KEY"] = api_key_groq
 
     settings = {
-        "model": "llama-3.1-70b-versatile",
+        "model": "llama3-70b-8192",
         "model_provider": "groq",
         "temperature": 0.3,
     }

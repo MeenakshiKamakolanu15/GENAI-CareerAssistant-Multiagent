@@ -2,7 +2,7 @@
 import os
 import asyncio
 from dotenv import load_dotenv
-from langchain.pydantic_v1 import Field
+from pydantic import Field
 from langchain.tools import BaseTool, tool, StructuredTool
 from data_loader import load_resume, write_cover_letter_to_doc
 from schemas import JobSearchInput
